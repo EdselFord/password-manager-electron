@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+      />
+
+      <title>Add Password</title>
+   </head>
+   <body>
+      <div class="container mt-2">
+         <h1>Tambah Password</h1>
+         <div class="card card-body mt-3">
+            <form>
+               <div class="mb-3">
+                  <label for="getpass-services" class="form-label"
+                     >Services</label
+                  >
+                  <input
+                     type="text"
+                     class="form-control"
+                     id="getpass-services"
+                     required
+                  />
+               </div>
+               <div class="mb-3">
+                  <label for="getpass-email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="getpass-email" />
+               </div>
+               <div class="mb-3">
+                  <label for="getpass-username" class="form-label"
+                     >Username</label
+                  >
+                  <input
+                     type="text"
+                     class="form-control"
+                     id="getpass-username"
+                  />
+               </div>
+               <div class="mb-3">
+                  <label for="getpass-password" class="form-label"
+                     >Password</label
+                  >
+                  <input
+                     type="text"
+                     class="form-control"
+                     id="getpass-password"
+                     required
+                  />
+               </div>
+               <div class="mb-3">
+                  <label for="getpass-other" class="form-label">Other</label>
+                  <input type="text" class="form-control" id="getpass-other" />
+               </div>
+               <button
+                  id="submit-add-password"
+                  type="submit"
+                  class="btn btn-dark"
+               >
+                  Add Password
+               </button>
+            </form>
+         </div>
+      </div>
+
+      <script>
+         const { ipcRenderer } = require("electron");
+
+         const addPasswordForm = document.querySelector("form");
+
+         addPasswordForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let passData = {
+               service: document.getElementById("getpass-services").value,
+               email: document.getElementById("getpass-email").value,
+               username: document.getElementById("getpass-username").value,
+               password: document.getElementById("getpass-password").value,
+               other: document.getElementById("getpass-other").value,
+            };
+            ipcRenderer.send("pass:add", passData);
+         });
+      </script>
+
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

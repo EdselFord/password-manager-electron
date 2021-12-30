@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+      />
+
+      <title>Password Manager</title>
+   </head>
+   <body>
+      <div class="container"></div>
+      <div class="container text-center mt-3 bg-ligth">
+         <h1 class="display-4 fw-bold">Password Manager</h1>
+         <p class="lead text-muted">by Edsel</p>
+      </div>
+      <div class="container" id="dataInside">
+         <form>
+            <div class="row justify-content-center">
+               <div class="mb-3" style="width: 500px">
+                  <label for="id-pass" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="id-pass" />
+               </div>
+            </div>
+            <div class="row justify-content-center">
+               <button
+                  type="submit"
+                  class="btn btn-dark"
+                  style="width: fit-content"
+               >
+                  Masuk
+               </button>
+            </div>
+         </form>
+      </div>
+      <script>
+         const { ipcRenderer } = require("electron");
+
+         document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (document.getElementById("id-pass").value == "1234") {
+               ipcRenderer.send("log:istrue", true);
+            } else {
+               document.querySelector(
+                  "div.container"
+               ).innerHTML = `<div class="alert alert-danger" role="alert">Password yang anda masukkan salah!</div>`;
+            }
+         });
+      </script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

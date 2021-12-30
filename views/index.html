@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+      />
+
+      <style>
+         .remove-password:hover {
+            cursor: pointer;
+         }
+      </style>
+
+      <title>Password Manager</title>
+   </head>
+   <body>
+      <div class="container text-center mt-3 bg-ligth">
+         <h1 class="display-4 fw-bold">Password Manager</h1>
+         <p class="lead text-muted">by Edsel</p>
+      </div>
+      <div class="container" id="dataInside" style="height: 70px;">
+         <div className="col">
+            <div class="float-start">
+               <button class="btn btn-outline-dark" type="button" id="go-to-add">
+               <i class="bi bi-plus-lg"></i>
+               </button>
+            </div>
+            <div class="input-group mb-3 float-end" style="width: 250px">
+               <input
+                  id="search-keyword"
+                  type="text"
+                  class="form-control"
+                  aria-describedby="button-addon2"
+               />
+               <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="search-button"
+               >
+                  <i class="bi bi-search"></i>
+               </button>
+            </div>
+         </div>
+         </div>
+      </div>
+      <div class="container mb-5">
+         <div class="row" id="password-data-list"></div>
+      </div>
+      <script src="js/script.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>
